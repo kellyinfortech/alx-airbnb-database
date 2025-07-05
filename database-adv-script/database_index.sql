@@ -12,3 +12,15 @@ CREATE INDEX idx_bookings_created_at ON bookings(created_at);
 
 -- Index on properties.city for city-based property filtering
 CREATE INDEX idx_properties_city ON properties(city);
+
+-- -------------------------------------------------------
+-- Performance measurement AFTER indexing
+-- Using EXPLAIN ANALYZE to check execution time
+-- -------------------------------------------------------
+
+EXPLAIN ANALYZE
+SELECT users.email, bookings.created_at
+FROM bookings
+JOIN users ON bookings.user_id = users.id
+WHERE bookings.created_at > '2023-01-01'
+ORDER BY bookings.created_at DESC;
