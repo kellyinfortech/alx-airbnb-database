@@ -14,10 +14,23 @@ ORDER BY
 SELECT
     property_id,
     COUNT(*) AS total_bookings,
-    RANK() OVER (ORDER BY COUNT(*) DESC) AS property_rank
+    RANK() OVER (ORDER BY COUNT(*) DESC) AS rank_position
 FROM
     bookings
 GROUP BY
     property_id
 ORDER BY
-    property_rank;
+    rank_position;
+
+
+-- 3. Rank properties using ROW_NUMBER() for the same purpose
+SELECT
+    property_id,
+    COUNT(*) AS total_bookings,
+    ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS row_number_position
+FROM
+    bookings
+GROUP BY
+    property_id
+ORDER BY
+    row_number_position;
