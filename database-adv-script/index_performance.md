@@ -20,8 +20,10 @@ Based on typical SQL queries involving filtering (`WHERE`), sorting (`ORDER BY`)
 
 ## 🏗️ SQL Index Creation Commands
 
+These commands are saved in the `database_index.sql` file.
+
 ```sql
--- Index on users email for fast lookups
+-- Index on users.email for fast lookups
 CREATE INDEX idx_users_email ON users(email);
 
 -- Index on bookings.user_id to improve JOINs with users
