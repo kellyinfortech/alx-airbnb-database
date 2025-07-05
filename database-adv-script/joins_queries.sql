@@ -28,7 +28,9 @@ SELECT
     reviews.user_id AS reviewer_id
 FROM 
     properties
-LEFT JOIN reviews ON properties.id = reviews.property_id;
+LEFT JOIN reviews ON properties.id = reviews.property_id
+ORDER BY properties.id;
+
 
 
 -- =============================================
